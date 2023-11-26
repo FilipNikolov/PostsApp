@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import "../css/post.css";
 import { Link } from "react-router-dom";
-import PostsDetails from './PostDetails';
 
 export default function Posts({message}:any)  {
-
   
-
   const [allPosts, setAllPosts] = useState([]);
   const [allUsers, setAllUsers] = useState([]); 
   const [allComments, setAllComments] = useState([]);
