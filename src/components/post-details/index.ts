@@ -1,3 +1,3 @@
 import PostsDetails from "./PostDetails";
 
-export {PostsDetails};
+export default { PostsDetails };

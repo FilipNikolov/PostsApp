@@ -1,0 +1,59 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+    "react-app",
+    "react-app/jest",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:import/typescript" 
+
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "@typescript-eslint/quotes": [
+            "error",
+            "double"
+        ],
+        "   ": [
+            "off"
+        ] ,
+        "no-console":[ 
+            "off"
+        ],
+        "max-len": [
+            "error", 
+            { "code": 120 }
+        ],
+        "import/prefer-default-export":[
+            "off"
+        ],
+        "@typescript-eslint/no-use-before-define":[
+            "off"
+        ],
+        "@typescript-eslint/no-shadow": [
+            "off",
+            {
+                "hoist": "all"
+            }
+        ]
+    
+    
+    }
+}

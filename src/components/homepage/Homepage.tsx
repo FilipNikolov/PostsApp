@@ -1,11 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const Homepage = () =>{
-    return(
-        <div className="homepage">
-        </div>
-    )
+function Homepage() {
+  return (
+    <div className="homepage" />
+  );
 }
 
 export default Homepage;
