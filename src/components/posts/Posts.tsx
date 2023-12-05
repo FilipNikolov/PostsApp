@@ -31,6 +31,7 @@ function Posts() {
       console.error("Error fetching data:", error);
     }
   };
+
   useEffect(() => {
     fetchData();
     // console.log(`${message} Posts `);
@@ -50,9 +51,9 @@ function Posts() {
     return all;
   }
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     const data = getMergedData(allPosts, allUsers, allComments);
-    const filterData = data.filter((item) => item.user?.name.toLowerCase().includes(e.target.value));
+    const filterData = data.filter((item) => item.user?.name.toLowerCase().includes(e.currentTarget.value));
     setMergedData(filterData);
   };
 
