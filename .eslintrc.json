@@ -1,56 +1,41 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "jest": true
-    },
-    "extends": [
-    "react-app",
-    "react-app/jest",
-    "airbnb",
-    "airbnb-typescript",
-    "plugin:import/typescript" 
-
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": ["react-app", "react-app/jest", "airbnb", "airbnb-typescript", "plugin:import/typescript"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "@typescript-eslint/quotes": ["error", "single"],
+    "max-len": ["error", { "code": 120 }],
+    "import/prefer-default-export": ["off", { "target": "single" }],
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false
+      }
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": "./tsconfig.json"
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
+    "@typescript-eslint/no-shadow": [
+      "off",
+      {
+        "hoist": "all"
+      }
     ],
-    "rules": {
-        "@typescript-eslint/quotes": [
-            "error",
-            "double"
-        ],
-        "no-console":[ 
-            "off"
-        ],
-        "max-len": [
-            "error", 
-            { "code": 120 }
-        ],
-        "import/prefer-default-export":[
-            "off",
-            {"target": "single"}
-        ],
-        "@typescript-eslint/no-use-before-define":[
-            "error", 
-           { 
-            "functions": false
-        }
-        ],
-        "@typescript-eslint/no-shadow": [
-            "off",
-            {
-                "hoist": "all"
-            }
-        ]
-
-
-    }
+    "comma-dangle": "off",
+    "@typescript-eslint/comma-dangle": "off",
+   "no-multi-spaces": ["error"],
+   "no-unused-vars":"off",
+   "no-console":"warn",
+   "object-curly-newline": "off",
+   "linebreak-style":"off" ,
+   "react/jsx-one-expression-per-line": "off",
+   "react/function-component-definition": "off"
+  }
 }

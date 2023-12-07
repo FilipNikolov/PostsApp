@@ -1,3 +1,3 @@
-import PostsDetails from "./PostDetails";
+import PostsDetails from './PostDetails';
 
 export default { PostsDetails };

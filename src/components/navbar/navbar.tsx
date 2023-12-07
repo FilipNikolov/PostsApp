@@ -1,5 +1,5 @@
-import React from "react";
-import "./Navbar.modules.scss";
+import React from 'react';
+import './Navbar.modules.scss';
 
 function Navbar() {
   return (
@@ -7,10 +7,14 @@ function Navbar() {
       <span className="navbar-brand ">Posts App</span>
       <ul className="navbar-nav mr-auto mt-2 mt-lg-0 px-5">
         <li className="nav-item">
-          <a className="nav-link" href="/">Home </a>
+          <a className="nav-link" href="/">
+            Home{' '}
+          </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/posts">Posts</a>
+          <a className="nav-link" href="/posts">
+            Posts
+          </a>
         </li>
       </ul>
     </div>
