@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styles from './PostDetails.module.scss';
+=======
+import './PostDetails.modules.scss';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+>>>>>>> 29cf3873832a9cc1c3e443731493c14c9a5af2be
 import { URL } from '../../config/index';
 import { POSTS_ROUTE, USER_ROUTE, COMMENTS_ROUTE } from '../../constant';
 import { User, Comment } from './types';
@@ -35,6 +41,7 @@ function PostsDetails() {
   };
   useEffect(() => {
     fetchData();
+<<<<<<< HEAD
     console.log('Racno Hello from post details');
   }, []);
 
@@ -70,6 +77,44 @@ function PostsDetails() {
                       {comment.body}
                     </p>
 
+=======
+    console.log('Rachno Hello from post details');
+  }, []);
+
+  return (
+    <div className="container col-md12">
+      <main className="card mt-5 ">
+        <div className="card-body post-card">
+          <h3>
+            {post.title} {post.id}
+          </h3>
+          <hr />
+          <span>
+            <strong>User: </strong>
+            {user.name}{' '}
+          </span>
+          <br />
+          <span>
+            <strong>Body: </strong>
+            {post.body}
+          </span>
+
+          <div className="comments">
+            <main>
+              {comments.map((comment: any) => (
+                <section className="container px-10">
+                  <main className="card mt-2">
+                    <div className="card-body">
+                      <span>
+                        <strong>Email: </strong>
+                        {comment.email}
+                      </span>
+                      <p>
+                        <strong>Comment: </strong>
+                        {comment.body}
+                      </p>
+                    </div>
+>>>>>>> 29cf3873832a9cc1c3e443731493c14c9a5af2be
                   </main>
                 </section>
               ))}
