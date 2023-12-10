@@ -1,9 +1,5 @@
-export type Post = {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
-};
+import { Post } from '../../core/hooks/posts/types';
+
 export type SingleComment = {
   id: number;
   email: string;
@@ -11,11 +7,11 @@ export type SingleComment = {
   postId: number;
 };
 export type User = {
-  name : string;
+  name: string;
   id: number;
 };
 export type FullPost = {
-  post:Post;
-  user?:User;
-  comments:SingleComment[];
+  post: Post;
+  user?: User;
+  comments: SingleComment[];
 };

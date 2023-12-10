@@ -1,16 +1,15 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import Navbar from "../navbar/navbar";
-import "./Root.modules.scss";
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import { Navbar } from '../navbar';
+import styles from './Root.module.scss';
 
 function RootLayout() {
   return (
-    <div className="root-layout">
+    <div className={`${styles.root_layout}`}>
       <main>
         <Navbar />
         <Outlet />
       </main>
-
     </div>
   );
 }
