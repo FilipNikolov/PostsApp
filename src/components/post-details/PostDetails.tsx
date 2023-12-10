@@ -42,15 +42,13 @@ function PostsDetails() {
         <div className="card-body post-card">
           <h3>
             {post.title}
-            {" "}
+
             {post.id}
           </h3>
           <hr />
           <span>
             <strong>User: </strong>
             {user.name}
-            {" "}
-
           </span>
           <br />
           <span>
