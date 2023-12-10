@@ -11,11 +11,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-<<<<<<< HEAD
   "plugins": ["react", "@typescript-eslint"],
-=======
-  "plugins": ["react", "@typescript-eslint", "prettier"],
->>>>>>> 29cf3873832a9cc1c3e443731493c14c9a5af2be
   "rules": {
     "@typescript-eslint/quotes": ["error", "single"],
     "max-len": ["error", { "code": 120 }],
@@ -40,12 +36,8 @@
    "object-curly-newline": "off",
    "linebreak-style":"off" ,
    "react/jsx-one-expression-per-line": "off",
-<<<<<<< HEAD
    "react/function-component-definition": "off",
    "prettier/prettier": 0,
    "@typescript-eslint/no-unused-vars":"off"
-=======
-   "react/function-component-definition": "off"
->>>>>>> 29cf3873832a9cc1c3e443731493c14c9a5af2be
   }
 }
