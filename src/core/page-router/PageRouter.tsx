@@ -11,7 +11,6 @@ const PageRouter = () => {
     createRoutesFromElements(
       <Route path="" element={<RootLayout />}>
         <Route path="/" element={<Homepage />} />
-        <Route path="/" element={<Homepage />} />
         <Route path={`/${POSTS_ROUTE}`} element={<Posts />} />
         <Route path="/post/:id" element={<PostDetails />} />
       </Route>

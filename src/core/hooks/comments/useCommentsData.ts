@@ -6,6 +6,7 @@ import { URL } from '../../../config';
 
 const useCommentsData = () => {
   const [allComments, setAllComments] = useState<SingleComment[]>([]);
+
   const fetchData = async () => {
     try {
       const commentsResponse = await axios.get(`${URL}/${COMMENTS_ROUTE}`);
