@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import userEvent from '@testing-library/user-event';
 import { USER_ROUTE } from '../../../constant';
 import { User } from './types';
 import { URL } from '../../../config';

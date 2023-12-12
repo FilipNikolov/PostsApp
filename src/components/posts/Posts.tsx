@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import styles from './Posts.module.scss';
 import { FullPost } from './types';
 import usePostsData from '../../core/hooks/posts/usePostsData';
@@ -21,7 +21,7 @@ function Posts() {
     setMergedData(mergedData);
   }, [allPosts, allUsers, allComments]);
 
-  function getMergedData(posts: Post[], users: User[], comments: SingleComment[]): FullPost[] {
+  const getMergedData =(posts: Post[], users: User[], comments: SingleComment[]): FullPost[] =>{
     const all: FullPost[] = posts.map((post) => {
       const postUser = users.find((user) => user.id === post.userId);
       const postComments = comments.filter((comment) => post.id === comment.postId);
@@ -40,7 +40,7 @@ function Posts() {
     const filterData = data.filter((item) => item.user?.name.toLowerCase().includes(e.currentTarget.value));
     setMergedData(filterData);
   };
-
+ 
   return (
     <div className={`${styles.main_box}`}>
       <div className={`${styles.search_bar}`}>
@@ -48,7 +48,7 @@ function Posts() {
       </div>
       <object className={`${styles.card_borders}`}>
         {mergedData.map((item) => (
-          <div className={`${styles.post_card}`}>
+          <div className={`${styles.post_card}`} key={item.post.id}>
             <main className={`${styles.card_design}`}>
               <div className={`${styles.card_info}`}>
                 <Link to={`${POST_ROUTE}${item.post.id}`}>
@@ -96,3 +96,6 @@ function Posts() {
 }
 Posts.displayName = 'Post';
 export default React.memo(Posts);
+
+
+{/* <Link to={`${POST_ROUTE}${item.post.id}`}></Link> */}

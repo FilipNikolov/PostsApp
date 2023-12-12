@@ -1,45 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React from 'react';
 import styles from './PostDetails.module.scss';
-import { URL } from '../../config/index';
-import { POSTS_ROUTE, USER_ROUTE, COMMENTS_ROUTE } from '../../constant';
-import { User, Comment } from './types';
-import { Post } from '../../core/hooks/posts/types';
+import useFetch from '../../core/hooks/useFetch/useFetch';
 
 function PostsDetails() {
-  const [post, setPost] = useState<Post>({
-    id: -1,
-    title: '',
-    body: '',
-    userId: -1,
-  });
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [user, setUser] = useState<User>({ name: '' });
-
-  const params = useParams();
-
-  const fetchData = async () => {
-    try {
-      const postRes = await axios.get(`${URL}/${POSTS_ROUTE}/${params.id}`);
-      setPost(postRes.data);
-
-      const userRes = await axios.get(`${URL}/${USER_ROUTE}/${postRes.data.userId}`);
-      setUser(userRes.data);
-
-      const commentsResponse = await axios.get(`${URL}/${POSTS_ROUTE}/${params.id}/${COMMENTS_ROUTE}`);
-      setComments(commentsResponse.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-    console.log('Racno Hello from post details');
-  }, []);
+  const {post,user,comments} =useFetch();
 
   return (
-    <div className={`${styles.main_box}`}>
+   <div className={`${styles.main_box}`} >
       <main className={`${styles.card_borders}`}>
         <div className={`${styles.post_card}`}>
           <div className={`${styles.card_title}`}>
@@ -49,7 +16,7 @@ function PostsDetails() {
           </div>
           <section className={`${styles.card_body}`}>
             <span>
-              {user.name}
+              {user.name} 
             </span>
             <span>
               {post.body}
@@ -77,9 +44,10 @@ function PostsDetails() {
           </div>
         </div>
       </main>
-    </div>
+ 
+   </div>
   );
-}
+};
 PostsDetails.displayName = 'PostDetails';
 
 export default React.memo(PostsDetails); // hoc
