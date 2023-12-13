@@ -3,10 +3,10 @@ import styles from './PostDetails.module.scss';
 import useFetch from '../../core/hooks/useFetch/useFetch';
 
 function PostsDetails() {
-  const {post,user,comments} =useFetch();
+  const { post, user, comments } = useFetch();
 
   return (
-   <div className={`${styles.main_box}`} >
+    <div className={`${styles.main_box}`}>
       <main className={`${styles.card_borders}`}>
         <div className={`${styles.post_card}`}>
           <div className={`${styles.card_title}`}>
@@ -16,7 +16,7 @@ function PostsDetails() {
           </div>
           <section className={`${styles.card_body}`}>
             <span>
-              {user.name} 
+              {user.name}
             </span>
             <span>
               {post.body}
@@ -36,7 +36,6 @@ function PostsDetails() {
                       <strong>Comment: </strong>
                       {comment.body}
                     </p>
-
                   </main>
                 </section>
               ))}
@@ -44,10 +43,10 @@ function PostsDetails() {
           </div>
         </div>
       </main>
- 
-   </div>
+
+    </div>
   );
-};
+}
 PostsDetails.displayName = 'PostDetails';
 
-export default React.memo(PostsDetails); // hoc
+export default React.memo(PostsDetails);

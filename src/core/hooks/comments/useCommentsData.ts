@@ -9,7 +9,7 @@ const useCommentsData = () => {
 
   const fetchData = async () => {
     try {
-      const commentsResponse = await axios.get(`${URL}/${COMMENTS_ROUTE}`);
+      const commentsResponse = await axios.get(`${URL}${COMMENTS_ROUTE}`);
       setAllComments(commentsResponse.data);
     } catch (error) {
       console.error('Error fetching commnets', error);

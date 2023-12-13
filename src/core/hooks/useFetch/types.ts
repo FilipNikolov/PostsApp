@@ -5,10 +5,10 @@ export type SingleComment = {
 export type User = {
   name: string;
 };
-export type Post ={
+export type Post = {
   body:string;
 
   title:string;
   id:number;
   userId:number;
-}
+};

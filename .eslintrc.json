@@ -4,7 +4,12 @@
       "es2021": true,
       "jest": true
     },
-    // "extends": ["react-app", "react-app/jest", "airbnb", "airbnb-typescript", "plugin:import/typescript"],
+    "extends": ["react-app/jest", "airbnb", "airbnb-typescript", "plugin:import/typescript"],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "ecmaVersion": "latest",
@@ -17,7 +22,7 @@
       "max-len": ["error", { "code": 120 }],
       "import/prefer-default-export": ["off", { "target": "single" }],
       "@typescript-eslint/no-use-before-define": [
-        "error",
+        "off",
         {
           "functions": false
         }
@@ -30,6 +35,7 @@
       ],
       "comma-dangle": "off",
       "@typescript-eslint/comma-dangle": "off",
+      
      "no-multi-spaces": ["error"],
      "no-unused-vars":"off",
      "no-console":"warn",
@@ -38,6 +44,7 @@
      "react/jsx-one-expression-per-line": "off",
      "react/function-component-definition": "off",
      "prettier/prettier": 0,
-     "@typescript-eslint/no-unused-vars":"off"
+     "@typescript-eslint/no-unused-vars":"off",
+     "no-multi-spaces" : "off"
     }
   }

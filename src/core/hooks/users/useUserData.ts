@@ -8,7 +8,7 @@ const useUserData = () => {
   const [allUsers, setAllUsers] = useState<User[]>([]);
   const fetchData = async () => {
     try {
-      const usersResponse = await axios.get(`${URL}/${USER_ROUTE}`);
+      const usersResponse = await axios.get(`${URL}${USER_ROUTE}`);
       setAllUsers(usersResponse.data);
     } catch (error) {
       console.error('Error fetching data', error);
