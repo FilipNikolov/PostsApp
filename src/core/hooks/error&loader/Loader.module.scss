@@ -1,0 +1,21 @@
+@import '../../../styles//colors.scss';
+.loader{
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.spinner {
+    border: 7px solid #f3f3f3; /* Light grey */
+    border-top: 7px solid $nav_bkg_color;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 3s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

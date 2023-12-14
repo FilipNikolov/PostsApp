@@ -4,6 +4,7 @@ import axios from 'axios';
 import { URL } from '../../../config';
 import { POSTS_ROUTE, USER_ROUTE, COMMENTS_ROUTE } from '../../../constant';
 import { User, Post, SingleComment } from './types';
+import usePostsData from '../posts/usePostsData';
 
 const useFetch = () => {
   const [post, setPost] = useState<Post>({
