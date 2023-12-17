@@ -1,4 +1,5 @@
 @import '../../styles/colors.scss';
+
 *{
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -19,10 +20,8 @@
   font-size: 1.2rem;
 }
 .nav_links{
-  height: 100%;
   width: 50%;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   gap: 5%;

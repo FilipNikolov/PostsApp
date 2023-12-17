@@ -36,7 +36,7 @@
     "comma-dangle": "off",
     "@typescript-eslint/comma-dangle": "off",
     "no-unused-vars":"off",
-     "no-console":"warn",
+     "no-console":"off",
      "object-curly-newline": "off",
      "linebreak-style":"off" ,
      "react/jsx-one-expression-per-line": "off",

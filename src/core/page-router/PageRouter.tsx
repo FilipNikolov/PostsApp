@@ -6,10 +6,9 @@ import { POSTS_ROUTE, POST_ROUTE_ID } from '../../constant';
 import Loading from '../hooks/error&loader/Loading';
 
 const LazyPosts = React.lazy(() => import('../../components/posts/Posts'));
-
 const LazyPostDetails = React.lazy(() => Promise.all([
   import('../../components/post-details/PostDetails'),
-  new Promise((resolve) => { setTimeout(resolve, 700); })
+  new Promise((resolve) => { setTimeout(resolve, 300); })
 ])
   .then(([moduleExports]) => moduleExports));
 

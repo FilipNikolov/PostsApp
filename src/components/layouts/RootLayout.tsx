@@ -1,15 +1,16 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { Navbar } from '../navbar';
+import { Outlet, useParams } from 'react-router-dom';
+import { Navbar, Header } from '../navbar';
 import styles from './Root.module.scss';
 
 function RootLayout() {
+  const params = useParams();
+  const navbar = params.id ? <Header /> : <Navbar />;
+
   return (
     <div className={`${styles.root_layout}`}>
-      <main>
-        <Navbar />
-        <Outlet />
-      </main>
+      {navbar}
+      <Outlet />
     </div>
   );
 }
