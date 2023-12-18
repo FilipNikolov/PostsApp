@@ -1,50 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
-import { FullPost } from './types';
-import usePostsData from '../../core/hooks/posts/usePostsData';
-import { Post } from '../../core/hooks/posts/types';
-import useUserData from '../../core/hooks/users/useUserData';
-import { User } from '../../core/hooks/users/types';
-import useCommentsData from '../../core/hooks/comments/useCommentsData';
-import { SingleComment } from '../../core/hooks/comments/types';
 import { POST_ROUTE } from '../../constant';
+import  useMergedData from '../../core/hooks/useMergedData/useMergedData';
 
 function Posts() {
-  const { allPosts } = usePostsData();
-  const { allUsers } = useUserData();
-  const { allComments } = useCommentsData();
-  const [mergedData, setMergedData] = useState<FullPost[]>([]);
-
-  useEffect(() => {
-    const mergedData = getMergedData(allPosts, allUsers, allComments);
-    setMergedData(mergedData);
-  }, [allPosts, allUsers, allComments]);
-
-  const getMergedData = (posts: Post[], users: User[], comments: SingleComment[]): FullPost[] => {
-    const all: FullPost[] = posts.map((post) => {
-      const postUser = users.find((user) => user.id === post.userId);
-      const postComments = comments.filter((comment) => post.id === comment.postId);
-      const fullPost: FullPost = {
-        post,
-        user: postUser,
-        comments: postComments,
-      };
-      return fullPost;
-    });
-    return all;
-  };
-
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const data = getMergedData(allPosts, allUsers, allComments);
-    const filterData = data.filter((item) => item.user?.name.toLowerCase().includes(e.currentTarget.value));
-    setMergedData(filterData);
-  };
+  const { mergedData, handleChange } = useMergedData();
 
   return (
     <div className={`${styles.main_box}`}>
       <div className={`${styles.search_bar}`}>
-        <input className={`${styles.search_input}`} type="search" placeholder="Search People" onChange={handleChange} />
+        <input
+          className={`${styles.search_input}`}
+          type="search"
+          placeholder="Search Authors"
+          onChange={handleChange}
+        />
       </div>
       <object className={`${styles.card_borders}`}>
         {mergedData.map((item) => (

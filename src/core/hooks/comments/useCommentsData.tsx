@@ -21,4 +21,5 @@ const useCommentsData = () => {
 
   return { allComments };
 };
+
 export default useCommentsData;

@@ -20,7 +20,7 @@ a:link {
   align-items: center;
 }
 .search_input{
-  width: 30%;
+  width: auto;
   background: none;
   border: 2px solid $card_border_color;
   border-radius: 30rem;
@@ -54,6 +54,7 @@ a:link {
 }
 .title{
   color: rgb(61, 57, 57);
+  margin: 1rem;
 }
 .card_body{
   width: 85%;

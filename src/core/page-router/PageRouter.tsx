@@ -3,7 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import { Homepage } from '../../components/homepage';
 import RootLayout from '../../components/layouts/RootLayout';
 import { POSTS_ROUTE, POST_ROUTE_ID } from '../../constant';
-import Loading from '../hooks/error&loader/Loading';
+import Loading from '../hooks/loader/Loading';
 
 const LazyPosts = React.lazy(() => import('../../components/posts/Posts'));
 const LazyPostDetails = React.lazy(() => Promise.all([
