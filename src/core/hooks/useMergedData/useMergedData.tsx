@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { FullPost } from './types';
-import usePostsData from '../posts/usePostsData';
-import { Post } from '../posts/types';
-import useUserData from '../users/useUserData';
-import { User } from '../users/types';
-import useCommentsData from '../comments/useCommentsData';
-import { SingleComment } from '../comments/types';
+import { SingleComment, Post, User } from '../../api/types';
+import useGetPostsQuery  from '../../api/useGetPostsQuery';
 
 const useMergedData = () => {
-  const { allPosts } = usePostsData();
-  const { allUsers } = useUserData();
-  const { allComments } = useCommentsData();
+  const { allPosts, allComments, allUsers } = useGetPostsQuery();
   const [mergedData, setMergedData] = useState<FullPost[]>([]);
 
   useEffect(() => {
@@ -18,7 +12,7 @@ const useMergedData = () => {
     setMergedData(mergedData);
   }, [allPosts, allUsers, allComments]);
 
-  const getMergedData = (posts: Post[], users: User[], comments: SingleComment[]): FullPost[] => {
+  const getMergedData = (posts: Post[], users: User[], comments: SingleComment[]):FullPost[] => {
     const all: FullPost[] = posts.map((post) => {
       const postUser = users.find((user) => user.id === post.userId);
       const postComments = comments.filter((comment) => post.id === comment.postId);

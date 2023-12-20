@@ -1,6 +1,4 @@
-import { SingleComment } from '../comments/types';
-import { User } from '../users/types';
-import { Post } from '../posts/types';
+import { SingleComment, Post, User } from '../../api/types';
 
 export type FullPost = {
   post: Post;

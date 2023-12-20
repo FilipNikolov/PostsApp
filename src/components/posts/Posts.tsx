@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
 import { POST_ROUTE } from '../../constant';
-import  useMergedData from '../../core/hooks/useMergedData/useMergedData';
+import useMergedData from '../../core/hooks/useMergedData/useMergedData';
 
 function Posts() {
-  const { mergedData, handleChange } = useMergedData();
+  const { handleChange, mergedData } = useMergedData();
 
   return (
     <div className={`${styles.main_box}`}>

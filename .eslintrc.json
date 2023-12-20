@@ -33,16 +33,20 @@
           "hoist": "all"
         }
       ],
-    "comma-dangle": "off",
-    "@typescript-eslint/comma-dangle": "off",
-    "no-unused-vars":"off",
-     "no-console":"off",
-     "object-curly-newline": "off",
-     "linebreak-style":"off" ,
-     "react/jsx-one-expression-per-line": "off",
-     "react/function-component-definition": "off",
+    "comma-dangle":  ["off"],
+    "@typescript-eslint/comma-dangle":  ["off"],
+    "no-unused-vars": ["off"],
+     "no-console": ["off"],
+     "object-curly-newline":  ["off"],
+     "linebreak-style": ["off"] ,
+     "react/jsx-one-expression-per-line":  ["off"],
+     "react/function-component-definition":  ["off"],
      "prettier/prettier": 0,
-     "@typescript-eslint/no-unused-vars":"off",
-     "no-multi-spaces" : "off"
+     "@typescript-eslint/no-unused-vars": ["off"],
+     "no-multi-spaces" : ["off"],
+     "import/no-extraneous-dependencies": ["off", 
+     {"devDependencies": false, 
+     "optionalDependencies": false, 
+     "peerDependencies": false}]
     }
   }
