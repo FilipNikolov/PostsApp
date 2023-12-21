@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
 import { POST_ROUTE } from '../../constant';
 import useMergedData from '../../core/hooks/useMergedData/useMergedData';
+import Loading from '../../core/hooks/loader/Loading';
 
 function Posts() {
-  const { handleChange, mergedData } = useMergedData();
+  const { handleChange, mergedData, isLoading, isError } = useMergedData();
 
+  if (isLoading) {
+    return <Loading />;
+  } if (isError) {
+    return <div>Error!</div>;
+  }
   return (
     <div className={`${styles.main_box}`}>
       <div className={`${styles.search_bar}`}>
@@ -28,7 +34,7 @@ function Posts() {
                       {item.post.title} {item.post.id}
                     </h3>
                   </div>
-                  <section key={item.post.id} className={`${styles.card_body}`}>
+                  <section className={`${styles.card_body}`}>
                     <span>
                       {item.user?.name}
                     </span>

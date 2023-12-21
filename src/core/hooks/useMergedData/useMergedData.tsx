@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { FullPost } from './types';
+import { FullPost, MergedData } from './types';
 import { SingleComment, Post, User } from '../../api/types';
 import useGetPostsQuery  from '../../api/useGetPostsQuery';
 
-const useMergedData = () => {
-  const { allPosts, allComments, allUsers } = useGetPostsQuery();
+const useMergedData = (): MergedData => {
+  const { allPosts, allComments, allUsers, isError, isLoading } = useGetPostsQuery();
   const [mergedData, setMergedData] = useState<FullPost[]>([]);
 
   useEffect(() => {
-    const mergedData = getMergedData(allPosts, allUsers, allComments);
-    setMergedData(mergedData);
-  }, [allPosts, allUsers, allComments]);
+    if (!isError && !isLoading) {
+      const mergedData = getMergedData(allPosts, allUsers, allComments);
+      setMergedData(mergedData);
+    }
+  }, [allPosts, allUsers, allComments, isLoading, isError]);
 
   const getMergedData = (posts: Post[], users: User[], comments: SingleComment[]):FullPost[] => {
     const all: FullPost[] = posts.map((post) => {
@@ -31,9 +33,12 @@ const useMergedData = () => {
     const filterData = data.filter((item) => item.user?.name.toLowerCase().includes(e.currentTarget.value));
     setMergedData(filterData);
   };
+
   return {
     handleChange,
-    mergedData
+    mergedData,
+    isError,
+    isLoading
   };
 };
 

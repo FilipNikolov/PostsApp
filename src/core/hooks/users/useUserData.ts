@@ -4,7 +4,7 @@ import { URL } from '../../../config';
 
 const usersFetch = async () => {
   try {
-    const usersResponse = await axios.get(`${URL}/${USER_ROUTE}`);
+    const usersResponse = await axios.get(`${URL}${USER_ROUTE}`);
     return usersResponse.data;
   } catch (error) {
     throw new Error('Error fetching users');

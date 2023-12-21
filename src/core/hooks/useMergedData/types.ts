@@ -5,3 +5,9 @@ export type FullPost = {
   user?: User;
   comments: SingleComment[];
 };
+export type MergedData = {
+  mergedData: FullPost[];
+  handleChange: (e:React.FormEvent<HTMLInputElement>) =>void;
+  isError:boolean;
+  isLoading: boolean;
+};
