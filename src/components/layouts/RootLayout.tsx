@@ -4,8 +4,8 @@ import { Navbar, Header } from '../navbar';
 import styles from './Root.module.scss';
 
 function RootLayout() {
-  const params = useParams();
-  const navbar = params.id ? <Header /> : <Navbar />;
+  const { id } = useParams();
+  const navbar = id ? <Header /> : <Navbar />;
 
   return (
     <div className={`${styles.root_layout}`}>

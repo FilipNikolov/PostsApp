@@ -41,12 +41,15 @@
      "linebreak-style": ["off"] ,
      "react/jsx-one-expression-per-line":  ["off"],
      "react/function-component-definition":  ["off"],
+     "react/react-in-jsx-scope": ["off"],
      "prettier/prettier": 0,
      "@typescript-eslint/no-unused-vars": ["off"],
      "no-multi-spaces" : ["off"],
      "import/no-extraneous-dependencies": ["off", 
      {"devDependencies": false, 
      "optionalDependencies": false, 
-     "peerDependencies": false}]
+     "peerDependencies": false}], 
+     "no-nested-ternary": "off"
     }
+    
   }

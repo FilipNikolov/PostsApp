@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './PostDetails.module.scss';
 import filteredData from '../../core/hooks/useFetch/filteredData';
+import { Loading, Error } from '../../core/hooks/loader';
 
 function PostsDetails() {
-  const filterData  = filteredData();
+  const { filterData, isError, loading } = filteredData();
 
-  return (
+  return loading ? <Loading /> : isError ? <Error /> : (
     <div className={`${styles.main_box}`}>
       {filterData.map((item) => (
         <main className={`${styles.card_borders}`}>

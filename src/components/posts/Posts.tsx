@@ -3,17 +3,12 @@ import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
 import { POST_ROUTE } from '../../constant';
 import useMergedData from '../../core/hooks/useMergedData/useMergedData';
-import Loading from '../../core/hooks/loader/Loading';
+import { Loading, Error } from '../../core/hooks/loader';
 
 function Posts() {
-  const { handleChange, mergedData, isLoading, isError } = useMergedData();
+  const { handleChange, mergedData, isError, loading } = useMergedData();
 
-  if (isLoading) {
-    return <Loading />;
-  } if (isError) {
-    return <div>Error!</div>;
-  }
-  return (
+  return loading ? <Loading /> : isError ? <Error /> : (
     <div className={`${styles.main_box}`}>
       <div className={`${styles.search_bar}`}>
         <input
