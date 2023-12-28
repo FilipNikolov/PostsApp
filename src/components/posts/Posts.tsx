@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
 import { POST_ROUTE } from '../../constant';
 import useMergedData from '../../core/hooks/useMergedData/useMergedData';
-import { Loading, Error } from '../../core/hooks/loader';
+import { Loading, Error } from '../loader&error';
 
 function Posts() {
   const { handleChange, mergedData, isError, loading } = useMergedData();

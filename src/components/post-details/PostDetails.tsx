@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './PostDetails.module.scss';
-import filteredData from '../../core/hooks/useFetch/filteredData';
-import { Loading, Error } from '../../core/hooks/loader';
+import filteredData from '../../core/hooks/useFilteredData/useFilteredData';
+import { Loading, Error } from '../loader&error';
 
 function PostsDetails() {
   const { filterData, isError, loading } = filteredData();

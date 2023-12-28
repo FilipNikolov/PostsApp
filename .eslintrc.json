@@ -49,7 +49,7 @@
      {"devDependencies": false, 
      "optionalDependencies": false, 
      "peerDependencies": false}], 
-     "no-nested-ternary": "off"
+     "no-nested-ternary": ["off"]
     }
     
   }
