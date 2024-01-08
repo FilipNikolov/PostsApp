@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import useCommentsData from '../hooks/comments/useCommentsData';
-import { SingleComment } from './types';
+import useCommentsData from '../../hooks/comments/useCommentsData';
+import { SingleComment, GetCommentsQuery} from '../types';
 
-const useGetCommentsQuery = () => {
+const useGetCommentsQuery = () : GetCommentsQuery => {
   const { data, isLoading, isError } = useQuery<SingleComment[]>(
     { queryKey: ['comments'], queryFn: useCommentsData }
   );

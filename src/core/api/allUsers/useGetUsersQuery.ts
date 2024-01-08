@@ -1,8 +1,8 @@
-import { UseQueryResult, useQuery } from '@tanstack/react-query';
-import useUserData from '../hooks/users/useUserData';
-import { User } from './types';
+import { useQuery } from '@tanstack/react-query';
+import useUserData from '../../hooks/users/useUserData';
+import { User, GetUsersQuery } from '../types';
 
-const useGetUsersQuery = () => {
+const useGetUsersQuery = () : GetUsersQuery => {
   const { data, isLoading, isError } = useQuery<User[]>(
     { queryKey: ['users'], queryFn: useUserData }
   );

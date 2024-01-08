@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FullPost, MergedData } from './types';
 import { SingleComment, Post, User } from '../../api/types';
-import useGetPostsQuery  from '../../api/useGetPostsQuery';
-import useGetUsersQuery  from '../../api/useGetUsersQuery';
-import useGetCommentsQuery  from '../../api/useGetCommentsQuery';
+import useGetPostsQuery  from '../../api/allPosts/useGetPostsQuery';
+import useGetUsersQuery  from '../../api/allUsers/useGetUsersQuery';
+import useGetCommentsQuery  from '../../api/allComments/useGetCommentsQuery';
 
 const useMergedData = (): MergedData => {
   const { allPosts, isLoadingPosts, isErrorPosts } = useGetPostsQuery();

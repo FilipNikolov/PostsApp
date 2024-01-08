@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import usePostsData from '../hooks/posts/usePostsData';
-import { Post } from './types';
+import usePostsData from '../../hooks/posts/usePostsData';
+import { Post,GetPostsQuery } from '../types';
 
-const useGetPostsQuery = () => {
+const useGetPostsQuery = () : GetPostsQuery => {
   const { data, isError, isLoading } = useQuery<Post[]>(
     { queryKey: ['posts'], queryFn: usePostsData }
   );
