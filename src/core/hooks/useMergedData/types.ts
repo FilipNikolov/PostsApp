@@ -7,7 +7,6 @@ export type FullPost = {
 };
 export type MergedData = {
   mergedData: FullPost[];
-  handleChange: (e:React.FormEvent<HTMLInputElement>) =>void;
   loading: boolean,
   isError:boolean,
 };
