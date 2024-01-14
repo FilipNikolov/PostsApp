@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-cycle
+import { FullPost } from '../hooks/getMergedData/types';
+
 export type SingleComment = {
   id: number;
   email: string;
@@ -5,6 +8,7 @@ export type SingleComment = {
   postId: number;
 };
 export type Post = {
+  push(fullPost: FullPost): unknown;
   id: number;
   title: string;
   body: string;

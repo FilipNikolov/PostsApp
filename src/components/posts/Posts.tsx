@@ -1,30 +1,32 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useCallback} from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
 import { POST_ROUTE } from '../../constant';
-import useMergedData from '../../core/hooks/useMergedData/useMergedData';
+import useMergedData from '../../core/hooks/getMergedData/useMergedData';
 import { Loading, Error } from '../loader&error';
 
-function Posts() {
+const Posts = () => {
   const { mergedData: initialMergedData, isError, loading } = useMergedData();
-  const [search , setSearch] = useState('');
-  const [mergedData, setMergedData] = useState(initialMergedData);
+   const [mergedData, setMergedData] = useState(initialMergedData);
 
-  const handleChange = (e: { target: { value: string; }; }) => {
+  const handleChange = useCallback((e: { target: { value: string; }; }) => {
     const searchValue = e.target.value.toLowerCase();
-    setSearch(searchValue);
     const searchedData = initialMergedData.filter((item) => 
-    item.user?.name.toLowerCase().includes(searchValue)
-
-    );
+    item.user?.name.toLowerCase().includes(searchValue));
     setMergedData(searchedData);
-  };
+  },[initialMergedData]);
 
   useEffect(()=>{
-    setMergedData(initialMergedData)
-  },[initialMergedData])
+    if(mergedData.length === 0) setMergedData(initialMergedData)
+  },[initialMergedData, mergedData]);
   
-  return loading ? <Loading /> : isError ? <Error /> : (
+  if(loading){
+    return <Loading/>;
+  }
+  if(isError){
+    return <Error/>;
+  }
+  return (
     <div className={`${styles.main_box}`}>
       <div className={`${styles.search_bar}`}>
         <input

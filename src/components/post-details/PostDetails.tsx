@@ -3,14 +3,20 @@ import styles from './PostDetails.module.scss';
 import filteredData from '../../core/hooks/useFilteredData/useFilteredData';
 import { Loading, Error } from '../loader&error';
 
-function PostsDetails() {
+const PostsDetails = () => {
   const { filterData, isError, loading } = filteredData();
 
-  return loading ? <Loading /> : isError ? <Error /> : (
+  if(loading){
+    return <Loading/>;
+  }
+  if(isError){
+    return <Error/>;
+  }
+  return (
     <div className={`${styles.main_box}`}>
       {filterData.map((item) => (
         <main className={`${styles.card_borders}`}>
-          <div className={`${styles.post_card}`}>
+          <div className={`${styles.post_card}`} key={item.post.id}>
             <div className={`${styles.card_title}`}>
               <h3 className={`${styles.title}`}>
                 {item.post.title} {item.post.id}
@@ -50,5 +56,4 @@ function PostsDetails() {
   );
 }
 PostsDetails.displayName = 'PostDetails';
-
 export default React.memo(PostsDetails);

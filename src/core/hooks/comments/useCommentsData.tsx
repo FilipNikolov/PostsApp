@@ -10,4 +10,5 @@ const commentsFetch = async () => {
     throw new Error('Error fetching comments');
   }
 };
+
 export default commentsFetch;
