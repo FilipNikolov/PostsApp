@@ -7,4 +7,5 @@ const Loading = () => (
   </div>
 );
 
-export default Loading;
+Loading.displayName = 'Loading';
+export default React.memo(Loading);

@@ -8,7 +8,7 @@ import Loading from '../../components/loader&error/Loading';
 const LazyPosts = React.lazy(() => import('../../components/posts/Posts'));
 const LazyPostDetails = React.lazy(() => Promise.all([
   import('../../components/post-details/PostDetails'),
-  new Promise((resolve) => { setTimeout(resolve, 250); })
+  new Promise((resolve) => { setTimeout(resolve, 200); })
 ])
   .then(([moduleExports]) => moduleExports));
 

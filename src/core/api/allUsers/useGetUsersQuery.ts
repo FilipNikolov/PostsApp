@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useUserData from '../../hooks/users/useUserData';
 import { User, GetUsersQuery } from '../types';
@@ -7,11 +8,13 @@ const useGetUsersQuery = () : GetUsersQuery => {
     { queryKey: ['users'], queryFn: useUserData }
   );
 
-  return {
+  const result = useMemo(()=> ({
     allUsers: data || [],
     isLoadingUsers: isLoading,
     isErrorUsers: isError,
-  };
+  }),[data, isLoading, isError]);
+
+return result;
 };
 
 export default useGetUsersQuery;

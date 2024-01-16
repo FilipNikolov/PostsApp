@@ -34,7 +34,7 @@ const Posts = () => {
           type="search"
           placeholder="Search Authors"
           onChange={handleChange}
-        />
+        /> 
       </div>
       <object className={`${styles.card_borders}`}>
         {mergedData.map((item) => (

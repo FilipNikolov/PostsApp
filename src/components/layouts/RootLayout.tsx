@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useMemo } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { Navbar, Header } from '../navbar';
 import styles from './Root.module.scss';
 
-function RootLayout() {
+const RootLayout = () => {
   const { id } = useParams();
-  const navbar = id ? <Header /> : <Navbar />;
+  const navbar = useMemo(() => (id ? <Header /> : <Navbar />),[id]);
 
   return (
     <div className={`${styles.root_layout}`}>
@@ -13,6 +13,8 @@ function RootLayout() {
       <Outlet />
     </div>
   );
-}
+  };
 
-export default RootLayout;
+RootLayout.displayName = 'RootLayout';
+export default React.memo(RootLayout);
+
