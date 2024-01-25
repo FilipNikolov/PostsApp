@@ -6,17 +6,28 @@ import useMergedData from '../../core/hooks/getMergedData/useMergedData';
 import { Loading, Error } from '../loader&error';
 
 const Posts = () => {
-  const { mergedData: initialMergedData, isError, loading, handleChange } = useMergedData();
+  const { mergedData: initialMergedData, isError, loading } = useMergedData();
   const [mergedData, setMergedData] = useState(initialMergedData);
+
+  const handleChange = useCallback(
+    (e: { target: { value: string } }) => {
+      const searchValue = e.target.value.toLowerCase();
+      const searchedData = initialMergedData.filter((item) => item.user?.name.toLowerCase().includes(searchValue));
+      setMergedData(searchedData);
+    },
+    [initialMergedData]
+  );
+
+  useEffect(() => {
+    if (mergedData.length === 0) setMergedData(initialMergedData);
+  }, [initialMergedData, mergedData]);
 
   if (loading) {
     return <Loading />;
   }
-
   if (isError) {
     return <Error />;
   }
-
   return (
     <div className={`${styles.main_box}`}>
       <div className={`${styles.search_bar}`}>
