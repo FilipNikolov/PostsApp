@@ -5,7 +5,9 @@ import styles from './Root.module.scss';
 
 const RootLayout = () => {
   const { id } = useParams();
-  const navbar = useMemo(() => (id ? <Header /> : <Navbar />),[id]);
+  const navbar = useMemo(() => {
+    return (id ? <Header /> : <Navbar />)},
+    [id]);
 
   return (
     <div className={`${styles.root_layout}`}>
@@ -15,6 +17,5 @@ const RootLayout = () => {
   );
   };
 
-RootLayout.displayName = 'RootLayout';
-export default React.memo(RootLayout);
+export default RootLayout;
 

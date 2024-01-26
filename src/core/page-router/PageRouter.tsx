@@ -1,16 +1,13 @@
 import React from 'react';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import pMinDelay from 'p-min-delay';
 import { Homepage } from '../../components/homepage';
 import RootLayout from '../../components/layouts/RootLayout';
 import { POSTS_ROUTE, POST_ROUTE_ID } from '../../constant';
 import Loading from '../../components/loader&error/Loading';
 
-const LazyPosts = React.lazy(() => import('../../components/posts/Posts'));
-const LazyPostDetails = React.lazy(() => Promise.all([
-  import('../../components/post-details/PostDetails'),
-  new Promise((resolve) => { setTimeout(resolve, 200); })
-])
-  .then(([moduleExports]) => moduleExports));
+const LazyPosts = React.lazy(() => {return import('../../components/posts/Posts')});
+const LazyPostDetails = React.lazy(() => {return pMinDelay(import('../../components/post-details/PostDetails'), 200)});
 
 const PageRouter = () => {
   const router = createBrowserRouter(

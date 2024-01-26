@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback} from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
 import { POST_ROUTE } from '../../constant';
-import useMergedData from '../../core/hooks/getMergedData/useMergedData';
+import useMergedData from '../../core/hooks/useMergedData/useMergedData';
 import { Loading, Error } from '../loader&error';
 
 const Posts = () => {
@@ -12,7 +12,7 @@ const Posts = () => {
   const handleChange = useCallback((e: { target: { value: string; }; }) => {
     const searchValue = e.target.value.toLowerCase();
     const searchedData = initialMergedData.filter((item) => 
-    item.user?.name.toLowerCase().includes(searchValue));
+    {return item.user?.name.toLowerCase().includes(searchValue)});
     setMergedData(searchedData);
   },[initialMergedData]);
 
@@ -37,7 +37,8 @@ const Posts = () => {
         /> 
       </div>
       <object className={`${styles.card_borders}`}>
-        {mergedData.map((item) => (
+        {mergedData.map((item) => {
+          return (
           <div className={`${styles.post_card}`} key={item.post.id}>
             <main className={`${styles.card_design}`}>
               <div className={`${styles.card_info}`}>
@@ -59,7 +60,7 @@ const Posts = () => {
                 <div className={`${styles.all_comments}`}>
                   <span className={`${styles.comments_title}`}>Comments:</span>
                   <main>
-                    {item.comments.map((comment: any) => (
+                    {item.comments.map((comment: any) => {return (
                       <section className={`${styles.comment}`}>
                         <main className={`${styles.comment_body}`}>
                           <p className={`${styles.comment_user}`}>
@@ -73,13 +74,13 @@ const Posts = () => {
 
                         </main>
                       </section>
-                    ))}
+                    )})}
                   </main>
                 </div>
               </div>
             </main>
           </div>
-        ))}
+        )})}
       </object>
     </div>
   );

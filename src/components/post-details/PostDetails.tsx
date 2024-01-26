@@ -14,7 +14,8 @@ const PostsDetails = () => {
   }
   return (
     <div className={`${styles.main_box}`}>
-      {filterData.map((item) => (
+      {filterData.map((item) => {
+        return (
         <main className={`${styles.card_borders}`}>
           <div className={`${styles.post_card}`} key={item.post.id}>
             <div className={`${styles.card_title}`}>
@@ -33,7 +34,7 @@ const PostsDetails = () => {
             <div className={`${styles.all_comments}`}>
               <span className={`${styles.comments_title}`}>Comments:</span>
               <main>
-                {item.comments.map((comment: any) => (
+                {item.comments.map((comment: any) => {return (
                   <section className={`${styles.comment}`}>
                     <main className={`${styles.comment_body}`}>
                       <p className={`${styles.comment_user}`}>
@@ -46,12 +47,12 @@ const PostsDetails = () => {
                       </p>
                     </main>
                   </section>
-                ))}
+                )})}
               </main>
             </div>
           </div>
         </main>
-      ))}
+      )})}
     </div>
   );
 }

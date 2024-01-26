@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './Loader.module.scss';
 
-const Loading = () => (
+const Loading = () => {
+  return (
   <div className={`${styles.loader}`}>
     <div className={`${styles.spinner}`} />
   </div>
-);
+)};
 
-Loading.displayName = 'Loading';
-export default React.memo(Loading);
+export default Loading;

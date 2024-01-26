@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Navbar.module.scss';
 import { HOME_ROUTE, POSTS_ROUTE } from '../../constant';
 
-function Navbar() {
+const Navbar = () => {
   return (
     <div className={`${styles.nav}`}>
       <span className={`${styles.nav_brand}`}>Posts App</span>

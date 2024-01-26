@@ -1,20 +1,20 @@
-import React,{ lazy, useMemo} from 'react';
+import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import useMergedData from '../getMergedData/useMergedData';
+import useMergedData from '../useMergedData/useMergedData';
 
 const filteredData = () => {
   const { id } = useParams();
   const { mergedData, loading, isError } = useMergedData();
   
-  const filterData = useMemo(()=> mergedData.filter((item) => item.post.id === Number(id)),[mergedData]);
+  const filterData = useMemo(()=> {return mergedData.filter((item) => 
+    {return item.post.id === Number(id)})},
+    [mergedData]);
   
-  const result = useMemo(()=>({
-      filterData,
-      loading,
-      isError
-    }),
-    [filterData, loading, isError])
-  return result;
+  return {
+    filterData,
+    loading,
+    isError
+  };
 
 };
 export default filteredData;

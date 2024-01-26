@@ -50,7 +50,8 @@
      "optionalDependencies": false, 
      "peerDependencies": false}], 
      "no-nested-ternary": ["off"],
-     "import/no-cycle": "off"
+     "import/no-cycle":["off"],
+     "arrow-body-style": ["error", "always"]
     }
     
   }
