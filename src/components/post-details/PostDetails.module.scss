@@ -1,6 +1,6 @@
 @import '../../styles//colors.scss';
 * {
-  color: rgb(61, 57, 57);
+  color: $pst_details_color;
   text-decoration: none;
 }
 a:link {
@@ -20,7 +20,7 @@ a:link {
   height: 100%;
   border: 0.15rem solid $card_border_color;
   border-radius: 0.3rem;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  box-shadow: $box_shadow_color 0px 25px 20px -20px;
   
 }
 .card_title{
@@ -31,7 +31,7 @@ a:link {
   justify-content: center;
 }
 .title{
-  color: rgb(61, 57, 57);
+  color: $pst_details_color;
   margin: 1rem;
 }
 .card_body{
