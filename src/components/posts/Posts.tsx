@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
 import { POST_ROUTE } from '../../constant';
@@ -7,7 +7,7 @@ import { Loading, Error } from '../loader&error';
 
 const Posts = () => {
   const { mergedData: initialMergedData, isError, loading } = useMergedData();
-   const [mergedData, setMergedData] = useState(initialMergedData);
+  const [mergedData, setMergedData] = useState(initialMergedData);
 
   const handleChange = useCallback((e: { target: { value: string; }; }) => {
     const searchValue = e.target.value.toLowerCase();
@@ -16,15 +16,15 @@ const Posts = () => {
     setMergedData(searchedData);
   },[initialMergedData]);
 
-  useEffect(()=>{
-    if(mergedData.length === 0) setMergedData(initialMergedData)
-  },[initialMergedData, mergedData]);
-  
-  if(loading){
-    return <Loading/>;
+  useEffect(() => {
+    if (mergedData.length === 0) setMergedData(initialMergedData);
+  }, [initialMergedData, mergedData]);
+
+  if (loading) {
+    return <Loading />;
   }
-  if(isError){
-    return <Error/>;
+  if (isError) {
+    return <Error />;
   }
   return (
     <div className={`${styles.main_box}`}>
@@ -34,7 +34,7 @@ const Posts = () => {
           type="search"
           placeholder="Search Authors"
           onChange={handleChange}
-        /> 
+        />
       </div>
       <object className={`${styles.card_borders}`}>
         {mergedData.map((item) => {
@@ -49,12 +49,8 @@ const Posts = () => {
                     </h3>
                   </div>
                   <section className={`${styles.card_body}`}>
-                    <span>
-                      {item.user?.name}
-                    </span>
-                    <span>
-                      {item.post.body}
-                    </span>
+                    <span>{item.user?.name}</span>
+                    <span>{item.post.body}</span>
                   </section>
                 </Link>
                 <div className={`${styles.all_comments}`}>
@@ -71,7 +67,6 @@ const Posts = () => {
                             <strong>Comment: </strong>
                             {comment.body}
                           </p>
-
                         </main>
                       </section>
                     )})}
@@ -84,6 +79,6 @@ const Posts = () => {
       </object>
     </div>
   );
-}
+};
 Posts.displayName = 'Post';
 export default React.memo(Posts);
