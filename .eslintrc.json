@@ -51,7 +51,9 @@
      "peerDependencies": false}], 
      "no-nested-ternary": ["off"],
      "import/no-cycle":["off"],
-     "arrow-body-style": ["error", "always"]
+     "arrow-body-style": ["error", "always"],
+      "react/jsx-props-no-spreading": "off"
+  
     }
     
   }

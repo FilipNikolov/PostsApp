@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_ROUTE } from '../../../constant';
+import { USER_ROUTE } from '../../route/constant-routes';
 import { URL } from '../../../config';
 
 const usersFetch = async () => {

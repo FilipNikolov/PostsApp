@@ -1,4 +1,4 @@
-import { useEffect} from 'react';
+import { useEffect, useDebugValue} from 'react';
 import { MergedData } from '../getMergedData/types';
 import getMergedData from '../getMergedData/getMergedData';
 

@@ -97,3 +97,35 @@ a:link {
   width: 80%;
   height: auto;
 }
+.pagination_list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+.pagination { 
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 5rem 0 5rem 0;
+  gap: 0.5rem;
+}
+.page_button{
+  color: $nav_bkg_color;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 20px;
+  border:  1px solid $nav_bkg_color;
+  border-radius: 10%;
+  background-color:$white_color;
+  &:hover{
+    color: $white_color;
+  background-color: $nav_bkg_color;
+    transition: 0.3s;
+    font-size:22px;
+    
+  }
+}
+.page_button:hover(.active) {background-color: #ddd;}

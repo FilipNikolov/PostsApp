@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { COMMENTS_ROUTE } from '../../../constant';
+import { COMMENTS_ROUTE } from '../../route/constant-routes';
 import { URL } from '../../../config';
 
 const commentsFetch = async () => {

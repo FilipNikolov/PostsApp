@@ -1,24 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
-import { POST_ROUTE } from '../../constant';
-import useMergedData from '../../core/hooks/useMergedData/useMergedData';
+import { POST_ROUTE } from '../../core/route/constant-routes';
 import { Loading, Error } from '../loader&error';
+import withComponentLogging from '../../core/hooks/customMessage/messageComponent';
+import pagePagination from '../../core/hooks/postPagination/pagination';
 
-const Posts = () => {
-  const { mergedData: initialMergedData, isError, loading } = useMergedData();
-  const [mergedData, setMergedData] = useState(initialMergedData);
 
-  const handleChange = useCallback((e: { target: { value: string; }; }) => {
-    const searchValue = e.target.value.toLowerCase();
-    const searchedData = initialMergedData.filter((item) => 
-    {return item.user?.name.toLowerCase().includes(searchValue)});
-    setMergedData(searchedData);
-  },[initialMergedData]);
-
-  useEffect(() => {
-    if (mergedData.length === 0) setMergedData(initialMergedData);
-  }, [initialMergedData, mergedData]);
+const Posts: React.FC = () => {
+const {totalPages,currentData,currentPage,handlePageChange,handleChange,isError,loading} = pagePagination();
 
   if (loading) {
     return <Loading />;
@@ -37,7 +27,7 @@ const Posts = () => {
         />
       </div>
       <object className={`${styles.card_borders}`}>
-        {mergedData.map((item) => {
+        {currentData.map((item) => {
           return (
           <div className={`${styles.post_card}`} key={item.post.id}>
             <main className={`${styles.card_design}`}>
@@ -57,7 +47,7 @@ const Posts = () => {
                   <span className={`${styles.comments_title}`}>Comments:</span>
                   <main>
                     {item.comments.map((comment: any) => {return (
-                      <section className={`${styles.comment}`}>
+                      <section className={`${styles.comment}`} key={comment.id}>
                         <main className={`${styles.comment_body}`}>
                           <p className={`${styles.comment_user}`}>
                             <strong>Email: </strong>
@@ -77,8 +67,24 @@ const Posts = () => {
           </div>
         )})}
       </object>
+     <div className={`${styles.pagination_list}`}>
+      <div className={`${styles.pagination}`}>
+        {Array.from({ length: totalPages }, (_, index) => {return (
+          // eslint-disable-next-line react/button-has-type
+          <button
+            key={index + 1}
+            onClick={() => {return handlePageChange(index + 1)}}
+            className={`${styles.page_button} ${
+              currentPage === index + 1 ? styles.active_page : ''
+            }`}
+          >
+            {index + 1}
+          </button>
+        )})}
+      </div>
+    </div>
     </div>
   );
 };
 Posts.displayName = 'Post';
-export default React.memo(Posts);
+export default withComponentLogging(Posts, 'Post');

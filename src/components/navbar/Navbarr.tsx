@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Navbar.module.scss';
-import { HOME_ROUTE, POSTS_ROUTE } from '../../constant';
+import { HOME_ROUTE, POSTS_ROUTE } from '../../core/route/constant-routes';
 
 const Navbar = () => {
   return (

@@ -2,10 +2,11 @@ import React from 'react';
 import styles from './PostDetails.module.scss';
 import filteredData from '../../core/hooks/useFilteredData/useFilteredData';
 import { Loading, Error } from '../loader&error';
+import withComponentLogging from '../../core/hooks/customMessage/messageComponent';
 
-const PostsDetails = () => {
+const PostsDetails: React.FC = () => {
   const { filterData, isError, loading } = filteredData();
-
+  
   if(loading){
     return <Loading/>;
   }
@@ -16,7 +17,7 @@ const PostsDetails = () => {
     <div className={`${styles.main_box}`}>
       {filterData.map((item) => {
         return (
-        <main className={`${styles.card_borders}`}>
+        <main className={`${styles.card_borders}`} key= {item.post.id}>
           <div className={`${styles.post_card}`} key={item.post.id}>
             <div className={`${styles.card_title}`}>
               <h3 className={`${styles.title}`}>
@@ -35,7 +36,7 @@ const PostsDetails = () => {
               <span className={`${styles.comments_title}`}>Comments:</span>
               <main>
                 {item.comments.map((comment: any) => {return (
-                  <section className={`${styles.comment}`}>
+                  <section className={`${styles.comment}`} key={comment.id}>
                     <main className={`${styles.comment_body}`}>
                       <p className={`${styles.comment_user}`}>
                         <strong>Email: </strong>
@@ -57,4 +58,4 @@ const PostsDetails = () => {
   );
 }
 PostsDetails.displayName = 'PostDetails';
-export default React.memo(PostsDetails);
+export default withComponentLogging(PostsDetails, 'PostDetails');

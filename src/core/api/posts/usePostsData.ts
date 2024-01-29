@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { POSTS_ROUTE } from '../../../constant';
+import { POSTS_ROUTE } from '../../route/constant-routes';
 import { URL } from '../../../config';
 
 const postsFetch = async () => {

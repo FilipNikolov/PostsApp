@@ -3,7 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import pMinDelay from 'p-min-delay';
 import { Homepage } from '../../components/homepage';
 import RootLayout from '../../components/layouts/RootLayout';
-import { POSTS_ROUTE, POST_ROUTE_ID } from '../../constant';
+import { POSTS_ROUTE, POST_ROUTE_ID } from './constant-routes';
 import Loading from '../../components/loader&error/Loading';
 
 const LazyPosts = React.lazy(() => {return import('../../components/posts/Posts')});
