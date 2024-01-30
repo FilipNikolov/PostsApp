@@ -11,7 +11,7 @@ const pagePagination = () => {
     const totalPages = useMemo(()=>{ return Math.ceil(initialMergedData.length / PAGE_SIZE)},[initialMergedData]);
     const startIndex = (currentPage - 1) * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;
-    const currentData = useMemo(()=>{ return mergedData.slice(startIndex, endIndex)},[mergedData]);
+    const currentData = mergedData.slice(startIndex, endIndex);
    
       const handlePageChange = (page: number) => {
         setCurrentPage(page);

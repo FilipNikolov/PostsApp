@@ -74,7 +74,7 @@ const {totalPages,currentData,currentPage,handlePageChange,handleChange,isError,
             onClick={() => { return handlePageChange(index + 1); } }
             className={`${styles.page_button} 
             ${currentPage === index + 1 ? styles.active_page : ''}`}
-            type='button'
+            type='submit'
           >
             {index + 1}
           </button>
