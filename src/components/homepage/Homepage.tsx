@@ -1,4 +1,5 @@
 import React from 'react';
+import messageComponent from '../../core/hooks/useCustomMessage/messageComponent';
 import styles from './Homepage.module.scss';
 
 const Homepage = () =>{
@@ -9,4 +10,4 @@ const Homepage = () =>{
   );
 }
 
-export default Homepage;
+export default messageComponent(Homepage, 'Homepage');

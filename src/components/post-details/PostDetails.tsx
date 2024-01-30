@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './PostDetails.module.scss';
 import filteredData from '../../core/hooks/useFilteredData/useFilteredData';
 import { Loading, Error } from '../loader&error';
-import withComponentLogging from '../../core/hooks/customMessage/messageComponent';
+import messageComponent from '../../core/hooks/useCustomMessage/messageComponent';
 
 const PostsDetails: React.FC = () => {
   const { filterData, isError, loading } = filteredData();
@@ -58,4 +58,4 @@ const PostsDetails: React.FC = () => {
   );
 }
 PostsDetails.displayName = 'PostDetails';
-export default withComponentLogging(PostsDetails, 'PostDetails');
+export default messageComponent(PostsDetails, 'PostDetails');

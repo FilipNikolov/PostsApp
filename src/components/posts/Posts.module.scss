@@ -129,3 +129,8 @@ a:link {
   }
 }
 .page_button:hover(.active) {background-color: #ddd;}
+
+.active_page { 
+  color: $white_color;
+  background-color: $nav_bkg_color;
+}

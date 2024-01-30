@@ -1,19 +1,19 @@
-import React,{useState,useEffect,useCallback} from 'react';
+import {useState,useEffect,useCallback,useMemo} from 'react';
+import debounce from 'debounce';
 import { PAGE_SIZE } from '../../route/constant-routes';
 import useMergedData from '../useMergedData/useMergedData';
 
-
-const pagePagination = () =>{
+const pagePagination = () => {
     const { mergedData:initialMergedData, isError, loading} = useMergedData();
     const [mergedData, setMergedData] = useState(initialMergedData);
     const [currentPage, setCurrentPage] = useState(1);
-
-    const totalPages = Math.ceil(initialMergedData.length / PAGE_SIZE);
+    
+    const totalPages = useMemo(()=>{ return Math.ceil(initialMergedData.length / PAGE_SIZE)},[initialMergedData]);
     const startIndex = (currentPage - 1) * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;
-    const currentData = mergedData.slice(startIndex, endIndex);
-
-    const handlePageChange = (page: number) => {
+    const currentData = useMemo(()=>{ return mergedData.slice(startIndex, endIndex)},[mergedData]);
+   
+      const handlePageChange = (page: number) => {
         setCurrentPage(page);
       };
 
@@ -21,12 +21,16 @@ const pagePagination = () =>{
         if (mergedData.length === 0) setMergedData(initialMergedData);
       }, [initialMergedData, mergedData]);
 
-      const handleChange = useCallback((e: { target: { value: string; }; }) => {
-        const searchValue = e.target.value.toLowerCase();
+      const debouncedHandleChange = debounce((e: { target: { value: string; }; }) => {
+        const searchValue = e.target.value.toLowerCase().trim();
         const searchedData = initialMergedData.filter((item) => 
         {return item.user?.name.toLowerCase().includes(searchValue)});
         setMergedData(searchedData);
-      },[initialMergedData]);
+      }, 700);
+
+      const handleChange = useCallback((e: { target: { value: string; }; }) => {
+          debouncedHandleChange(e);
+      }, [initialMergedData, debouncedHandleChange]);
 
     return {
         mergedData,
@@ -39,5 +43,5 @@ const pagePagination = () =>{
         currentPage
     }
 
-};
+  };
 export default pagePagination;

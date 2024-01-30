@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
 import { POST_ROUTE } from '../../core/route/constant-routes';
 import { Loading, Error } from '../loader&error';
-import withComponentLogging from '../../core/hooks/customMessage/messageComponent';
-import pagePagination from '../../core/hooks/postPagination/pagination';
-
+import messageComponent from '../../core/hooks/useCustomMessage/messageComponent';
+import pagePagination from '../../core/hooks/usePostPagination&Search/pagination&search';
 
 const Posts: React.FC = () => {
 const {totalPages,currentData,currentPage,handlePageChange,handleChange,isError,loading} = pagePagination();
@@ -70,13 +69,12 @@ const {totalPages,currentData,currentPage,handlePageChange,handleChange,isError,
      <div className={`${styles.pagination_list}`}>
       <div className={`${styles.pagination}`}>
         {Array.from({ length: totalPages }, (_, index) => {return (
-          // eslint-disable-next-line react/button-has-type
-          <button
+        <button
             key={index + 1}
-            onClick={() => {return handlePageChange(index + 1)}}
-            className={`${styles.page_button} ${
-              currentPage === index + 1 ? styles.active_page : ''
-            }`}
+            onClick={() => { return handlePageChange(index + 1); } }
+            className={`${styles.page_button} 
+            ${currentPage === index + 1 ? styles.active_page : ''}`}
+            type='button'
           >
             {index + 1}
           </button>
@@ -87,4 +85,4 @@ const {totalPages,currentData,currentPage,handlePageChange,handleChange,isError,
   );
 };
 Posts.displayName = 'Post';
-export default withComponentLogging(Posts, 'Post');
+export default messageComponent(Posts, 'Post');
