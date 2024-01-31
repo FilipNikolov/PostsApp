@@ -115,10 +115,11 @@ a:link {
 .page_button{
   color: $nav_bkg_color;
   width: 2.5rem;
+  cursor: pointer;
   height: 2.5rem;
   font-size: 20px;
   border:  1px solid $nav_bkg_color;
-  border-radius: 10%;
+  border-radius: 40%;
   background-color:$white_color;
   &:hover{
     color: $white_color;
@@ -134,3 +135,18 @@ a:link {
   color: $white_color;
   background-color: $nav_bkg_color;
 }
+.next_previous_button{
+  color: $nav_bkg_color;
+  font-size: 60px;
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 20px;
+  border:  1px solid $nav_bkg_color;
+  border-radius: 50%;
+  background-color: $white_color;
+  &:hover{
+    width: 2.8rem;
+    height: 2.8rem;
+    transition: 0.2s;
+}}

@@ -7,7 +7,14 @@ import messageComponent from '../../core/hooks/useCustomMessage/messageComponent
 import pagePagination from '../../core/hooks/usePostPagination&Search/pagination&search';
 
 const Posts: React.FC = () => {
-const {totalPages,currentData,currentPage,handlePageChange,handleChange,isError,loading} = pagePagination();
+
+const {
+  totalPages,currentData,
+  currentPage,handlePageChange,
+  handleChange,isError,
+  loading,previousPage,
+  nextPage
+} = pagePagination();
 
   if (loading) {
     return <Loading />;
@@ -68,8 +75,11 @@ const {totalPages,currentData,currentPage,handlePageChange,handleChange,isError,
       </object>
      <div className={`${styles.pagination_list}`}>
       <div className={`${styles.pagination}`}>
-        {Array.from({ length: totalPages }, (_, index) => {return (
-        <button
+      <button className={`${styles.next_previous_button}`} disabled={currentPage === 1}  
+      onClick={() => {return handlePageChange(previousPage)}} 
+        type='button'>&#8249;&#8249;</button>
+        {Array.from({ length:  totalPages }, (_, index) => {return (
+       <button
             key={index + 1}
             onClick={() => { return handlePageChange(index + 1); } }
             className={`${styles.page_button} 
@@ -79,6 +89,9 @@ const {totalPages,currentData,currentPage,handlePageChange,handleChange,isError,
             {index + 1}
           </button>
         )})}
+         <button className={`${styles.next_previous_button}`} disabled={currentPage === 12}  
+      onClick={() => {return handlePageChange(nextPage)}} 
+        type='button'>&#8250;&#8250;</button>
       </div>
     </div>
     </div>
