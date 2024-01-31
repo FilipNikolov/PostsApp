@@ -3,17 +3,22 @@ import { Link } from 'react-router-dom';
 import styles from './Posts.module.scss';
 import { POST_ROUTE } from '../../core/route/constant-routes';
 import { Loading, Error } from '../loader&error';
-import messageComponent from '../../core/hooks/useCustomMessage/messageComponent';
 import pagePagination from '../../core/hooks/usePostPagination&Search/pagination&search';
+import messageComponent from '../../core/hooks/useCustomMessage/messageComponent';
+
 
 const Posts: React.FC = () => {
 
 const {
-  totalPages,currentData,
-  currentPage,handlePageChange,
+  totalPages,
+  currentData,
+  currentPage,
+  handlePageChange,
   handleChange,isError,
-  loading,previousPage,
-  nextPage
+  loading,
+  previousPage,
+  nextPage,
+  
 } = pagePagination();
 
   if (loading) {

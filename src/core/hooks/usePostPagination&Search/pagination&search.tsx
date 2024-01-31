@@ -2,7 +2,6 @@ import {useState,useEffect,useCallback,useMemo} from 'react';
 import debounce from 'debounce';
 import { PAGE_SIZE } from '../../route/constant-routes';
 import useMergedData from '../useMergedData/useMergedData';
-import { Loading } from '../../../components/loader&error';
 
 const pagePagination = () => {
     const { mergedData:initialMergedData, isError, loading} = useMergedData();
@@ -21,8 +20,8 @@ const pagePagination = () => {
       };
 
       useEffect(() => {
-        if (currentData.length === 0) setMergedData(initialMergedData);
-      }, [initialMergedData, currentData,mergedData]);
+        if (mergedData.length === 0) setMergedData(initialMergedData)
+      }, [initialMergedData,mergedData,currentData]);
 
       const debouncedHandleChange = debounce((e: { target: { value: string; }; }) => {
         const searchValue = e.target.value.toLowerCase().trim();
@@ -36,7 +35,6 @@ const pagePagination = () => {
       }, [initialMergedData, debouncedHandleChange]);
 
     return {
-        mergedData,
         totalPages,
         currentData,
         handlePageChange,
